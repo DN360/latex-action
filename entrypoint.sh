@@ -4,6 +4,7 @@ set -e
 
 root_file="$1"
 GITHUB_TOKEN="$2"
+GITHUB_EVENT_PATH="$3"
 #working_directory="$2"
 #compiler="$3"
 #args="$4"
