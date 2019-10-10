@@ -9,6 +9,10 @@ inputs:
     description: "github token. this is require when comment is true."
     default: ""
     required: true
+  event_path:
+    description: "github event_path. this is require when comment is true."
+    default: ""
+    required: true
   working_directory:
     description: The working directory for texliveonfly to be invoked
   compiler:
@@ -27,6 +31,7 @@ runs:
   args:
     - ${{ inputs.root_file }}
     - ${{ inputs.token }}
+    - ${{ inputs.event_path }}
     #- ${{ inputs.args }}
     #- ${{ inputs.extra_packages }}
     #- ${{ inputs.extra_system_packages }}
