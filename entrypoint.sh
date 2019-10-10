@@ -31,13 +31,15 @@ GITHUB_TOKEN="$2"
 
 #texliveonfly -c "$compiler" -a "$args" "$root_file"
 
+tlmgr install biblatex
+
 latexmk -pdfdvi -latex=platex -synctex=1 -e main.tex
 
 ls
 
-latexmk main.tex && latexmk -c main.tex
+# latexmk main.tex && latexmk -c main.tex
 
-ls
+# ls
 
 pwd
 
