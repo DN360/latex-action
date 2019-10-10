@@ -31,6 +31,7 @@ GITHUB_TOKEN="$2"
 
 #texliveonfly -c "$compiler" -a "$args" "$root_file"
 
+tlmgr update --self
 tlmgr install biblatex
 
 latexmk -pdfdvi -latex=platex -synctex=1 -e main.tex
