@@ -6,6 +6,7 @@ RUN apk --no-cache add \
         gnupg \
         perl \
         python \
+        python3 \
         tar \
         wget \
         xz
