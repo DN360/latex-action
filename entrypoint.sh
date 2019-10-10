@@ -42,6 +42,8 @@ res=`curl -H "Authorization: token $GITHUB_TOKEN" -X POST https://api.github.com
   \"prerelease\": false
 }"`
 
+echo ${res}
+
 # extract release id
 rel_id=`echo ${res} | python3 -c 'import json,sys;print(json.load(sys.stdin)["id"])'`
 

@@ -27,6 +27,8 @@ runs:
     #- ${{ inputs.args }}
     #- ${{ inputs.extra_packages }}
     #- ${{ inputs.extra_system_packages }}
+  env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 branding:
   icon: book
   color: blue
