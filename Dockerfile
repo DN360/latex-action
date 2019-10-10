@@ -4,6 +4,7 @@ RUN apk --no-cache add \
         curl \
         ghostscript \
         gnupg \
+        jq \
         perl \
         python \
         python3 \
