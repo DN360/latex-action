@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM frolvlad/alpine-glibc:latest
 
 RUN apk --no-cache add \
         ghostscript \
@@ -7,9 +7,7 @@ RUN apk --no-cache add \
         python \
         tar \
         wget \
-        xz \
-        texlive-latex-extra \
-        texlive-lang-japanese 
+        xz
 
 ENV PATH="/opt/texlive/texdir/bin/x86_64-linuxmusl:${PATH}"
 WORKDIR /root
