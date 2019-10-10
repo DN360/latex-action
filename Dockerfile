@@ -1,4 +1,4 @@
-FROM paperist/alpine-texlive-ja:latest
+FROM tkr1205/alpine-texlive-ja:latest
 
 RUN apk --no-cache add \
         curl \
