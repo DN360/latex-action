@@ -31,6 +31,9 @@ fi
 #texliveonfly -c "$compiler" -a "$args" "$root_file"
 latexmk -c "$root_file"
 
+echo github_token
+echo ${GITHUB_TOKEN}
+
 # create release
 res=`curl -H "Authorization: token $GITHUB_TOKEN" -X POST https://api.github.com/repos/KONEPITO1205/Graduate_Report/releases \
 -d "
