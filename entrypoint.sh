@@ -30,7 +30,12 @@ GITHUB_TOKEN="$2"
 #fi
 
 #texliveonfly -c "$compiler" -a "$args" "$root_file"
+
+echo $root_file
+
 latexmk -c "$root_file"
+
+pwd
 
 find main.pdf
 
