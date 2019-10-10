@@ -29,4 +29,4 @@ if [ -n "$working_directory" ]; then
 fi
 
 #texliveonfly -c "$compiler" -a "$args" "$root_file"
-latexmk -c "$compiler" -a "$root_file"
+latexmk -c "$compiler" "$root_file"
