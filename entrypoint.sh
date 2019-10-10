@@ -31,7 +31,7 @@ GITHUB_TOKEN="$2"
 
 #texliveonfly -c "$compiler" -a "$args" "$root_file"
 
-latexmk -pdfdvi -latex=platex -synctex=1 -e "$dvipdf='dvipdfmx %O %S';$bibtex='pbibtex';$makeindex='mendex';" main.tex
+latexmk -pdfdvi -latex=platex -synctex=1 -e main.tex
 
 ls
 
