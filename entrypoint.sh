@@ -33,6 +33,7 @@ GITHUB_TOKEN="$2"
 
 tlmgr update --self
 tlmgr install biblatex
+tlmgr install Biber
 
 latexmk -pdfdvi -latex=platex -synctex=1 -e main.tex
 
