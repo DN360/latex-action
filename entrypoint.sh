@@ -31,7 +31,7 @@ GITHUB_TOKEN="$2"
 
 #texliveonfly -c "$compiler" -a "$args" "$root_file"
 
-latexmk -pdf main.tex
+latexmk -pdfps main.tex
 
 ls
 
