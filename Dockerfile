@@ -19,6 +19,7 @@ COPY \
   setup.sh \
   texlive.profile \
   texlive_pgp_keys.asc \
+  funiosys.sty \
   /root/
 RUN /root/setup.sh
 
