@@ -32,7 +32,7 @@ GITHUB_TOKEN="$2"
 #texliveonfly -c "$compiler" -a "$args" "$root_file"
 latexmk -c "$root_file"
 
-ls
+find main.pdf
 
 # Only upload to non-draft releases
 #IS_DRAFT=$(jq --raw-output '.release.draft' $GITHUB_EVENT_PATH)
