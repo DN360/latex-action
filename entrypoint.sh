@@ -36,9 +36,9 @@ latexmk -c "$root_file"
 res=`curl -H "Authorization: token ${GITHUB_TOKEN}" -X POST https://api.github.com/repos/KONEPITO1205/Graduate_Report/releases \
 -d "
 {
-  \"tag_name\": \"v$GITHUB_SHA\",
-  \"target_commitish\": \"$GITHUB_SHA\",
-  \"name\": \"v$GITHUB_SHA\",
+  \"tag_name\": \"v${GITHUB_SHA}\",
+  \"target_commitish\": \"${GITHUB_SHA}\",
+  \"name\": \"v${GITHUB_SHA}\",
   \"draft\": false,
   \"prerelease\": false
 }"`
