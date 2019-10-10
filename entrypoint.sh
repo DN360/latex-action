@@ -107,7 +107,8 @@ curl \
   -sSL \
   -XPOST \
   -H "${AUTH_HEADER}" \
-  -H "${CONTENT_LENGTH_HEADER}" \
   -H "${CONTENT_TYPE_HEADER}" \
   --upload-file main.pdf \
   "${UPLOAD_URL}"
+
+#   -H "${CONTENT_LENGTH_HEADER}" \
