@@ -85,7 +85,7 @@ if [[ -z main.pdf ]]; then
 fi
 
 # Only upload to non-draft releases
-IS_DRAFT=$(jq --raw-output '.release.draft' $GITHUB_EVENT_PATH)
+IS_DRAFT=$(jq --raw-output '.release.draft' ${GITHUB_EVENT_PATH})
 if [ "$IS_DRAFT" = true ]; then
   echo "This is a draft, so nothing to do!"
   exit 0
@@ -97,7 +97,7 @@ CONTENT_LENGTH_HEADER="Content-Length: $(stat -c%s main.pdf)"
 CONTENT_TYPE_HEADER="Content-Type: application/pdf"
 
 # Build the Upload URL from the various pieces
-RELEASE_ID=$(jq --raw-output '.release.id' $GITHUB_EVENT_PATH)
+RELEASE_ID=$(jq --raw-output '.release.id' ${GITHUB_EVENT_PATH})
 FILENAME=$(basename main.pdf)
 UPLOAD_URL="https://uploads.github.com/repos/${GITHUB_REPOSITORY}/releases/${RELEASE_ID}/assets?name=${FILENAME}"
 echo "$UPLOAD_URL"
