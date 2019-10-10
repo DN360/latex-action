@@ -33,7 +33,7 @@ GITHUB_TOKEN="$2"
 
 echo $root_file
 
-latexmk -c "$root_file" -output-directory "/github/workspace"
+latexmk -c -pdf "$root_file"
 
 pwd
 
