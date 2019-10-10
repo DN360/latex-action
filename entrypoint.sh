@@ -35,6 +35,8 @@ echo $root_file
 
 latexmk -c -pdf "$root_file"
 
+ls
+
 pwd
 
 find main.pdf
