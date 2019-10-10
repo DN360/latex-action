@@ -31,9 +31,11 @@ GITHUB_TOKEN="$2"
 
 #texliveonfly -c "$compiler" -a "$args" "$root_file"
 
-echo $root_file
+latexmk -pdf main.tex
 
-latexmk -c -pdf "$root_file"
+ls
+
+latexmk -pdf -job-name="/github/workspace/test.tex" main.tex
 
 ls
 
