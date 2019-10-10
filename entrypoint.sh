@@ -71,21 +71,42 @@ find main.pdf
 #  --upload-file "main.pdf" \
 #  "${UPLOAD_URL}"
 
-# create release
-res=`curl -H "Authorization: token $GITHUB_TOKEN" -X POST https://api.github.com/repos/[user]/[repo]/releases \
--d "
-{
-  \"tag_name\": \"v$GITHUB_SHA\",
-  \"target_commitish\": \"$GITHUB_SHA\",
-  \"name\": \"v$GITHUB_SHA\",
-  \"draft\": false,
-  \"prerelease\": false
-}"`
+# Ensure that the GITHUB_TOKEN secret is included
+if [[ -z "$GITHUB_TOKEN" ]]; then
+  echo "Set the GITHUB_TOKEN env variable."
+  exit 1
+fi
 
-# extract release id
-rel_id=`echo ${res} | python3 -c 'import json,sys;print(json.load(sys.stdin)["id"])'`
+# Ensure that the file path is present
+if [[ -z main.pdf ]]; then
+  echo "You must pass at least one argument to this action, the path to the file to upload."
+  exit 1
+fi
 
-# upload built pdf
-curl -H "Authorization: token $GITHUB_TOKEN" -X POST https://uploads.github.com/repos/[user]/[repo]/releases/${rel_id}/assets?name=main.pdf\
-  --header 'Content-Type: application/pdf'\
-  --upload-file main.pdf
+# Only upload to non-draft releases
+IS_DRAFT=$(jq --raw-output '.release.draft' $GITHUB_EVENT_PATH)
+if [ "$IS_DRAFT" = true ]; then
+  echo "This is a draft, so nothing to do!"
+  exit 0
+fi
+
+# Prepare the headers
+AUTH_HEADER="Authorization: token ${GITHUB_TOKEN}"
+CONTENT_LENGTH_HEADER="Content-Length: $(stat -c%s main.pdf)"
+CONTENT_TYPE_HEADER="Content-Type: application/pdf"
+
+# Build the Upload URL from the various pieces
+RELEASE_ID=$(jq --raw-output '.release.id' $GITHUB_EVENT_PATH)
+FILENAME=$(basename main.pdf)
+UPLOAD_URL="https://uploads.github.com/repos/${GITHUB_REPOSITORY}/releases/${RELEASE_ID}/assets?name=${FILENAME}"
+echo "$UPLOAD_URL"
+
+# Upload the file
+curl \
+  -sSL \
+  -XPOST \
+  -H "${AUTH_HEADER}" \
+  -H "${CONTENT_LENGTH_HEADER}" \
+  -H "${CONTENT_TYPE_HEADER}" \
+  --upload-file main.pdf \
+  "${UPLOAD_URL}"
