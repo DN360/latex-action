@@ -31,10 +31,6 @@ GITHUB_TOKEN="$2"
 
 #texliveonfly -c "$compiler" -a "$args" "$root_file"
 
-tlmgr update --self
-tlmgr install biblatex
-tlmgr install Biber
-
 latexmk -pdfdvi -latex=platex -synctex=1 -e main.tex
 
 ls
