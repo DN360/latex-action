@@ -28,8 +28,4 @@ if [ -n "$working_directory" ]; then
   cd "$working_directory"
 fi
 
-# texliveonfly -c "$compiler" -a "$args" "$root_file"
-
-# latexmk -C main.tex && latexmk main.tex && latexmk -c main.tex
-latexmk -pdfdvi -latex=platex -synctex=1 -e "$dvipdf='dvipdfmx %O %S';$bibtex='pbibtex';$makeindex='mendex';" main.tex
-# latexmk -pdfdvi -latex=platex main.tex
+texliveonfly -c "$compiler" -a "$args" "$root_file"
