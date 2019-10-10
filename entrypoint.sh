@@ -30,4 +30,5 @@ fi
 
 # texliveonfly -c "$compiler" -a "$args" "$root_file"
 
-latexmk -C main.tex && latexmk main.tex && latexmk -c main.tex
+#latexmk -C main.tex && latexmk main.tex && latexmk -c main.tex
+latexmk -pdfdvi -latex=platex main.tex
