@@ -5,6 +5,10 @@ inputs:
   root_file:
     description: The root LaTeX file to be compiled
     required: true
+  token:
+    description: "github token. this is require when comment is true."
+    default: ""
+    required: true
   working_directory:
     description: The working directory for texliveonfly to be invoked
   compiler:
@@ -22,8 +26,7 @@ runs:
   image: Dockerfile
   args:
     - ${{ inputs.root_file }}
-    - ${{ inputs.working_directory }}
-    - ${{ inputs.compiler }}
+    - ${{ inputs.token }}
     #- ${{ inputs.args }}
     #- ${{ inputs.extra_packages }}
     #- ${{ inputs.extra_system_packages }}
