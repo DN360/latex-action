@@ -1,4 +1,4 @@
-FROM frolvlad/alpine-glibc:latest
+FROM paperist/alpine-texlive-ja:latest
 
 RUN apk --no-cache add \
         ghostscript \
