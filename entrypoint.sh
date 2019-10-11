@@ -40,7 +40,6 @@ RELEASE_URL="https://uploads.github.com/repos/${REPOSITORY}/releases/${RELEASE_I
 
 # Uploads artifacts
 FILE="/github/workspace/main.pdf"
-cat "${FILE}"
 MIME=$(file -b --mime-type "${FILE}")
 echo "Uploading assets ${FILE} as ${MIME}..."
 NAME=$(basename "${FILE}")
