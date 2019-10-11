@@ -9,6 +9,9 @@ TAG="$4"
 
 # kanji-config-updmap-sys ipaex
 # kpsewhich --format=.map psfonts.map
+
+where dvipdfmx
+
 ls
 
 # latexmk -pdfdvi -latex=platex -synctex=1 -e main.tex
