@@ -11,7 +11,11 @@ echo Type1
 ls ls /usr/share/fonts/Type1
 # kanji-config-updmap-sys ipaex
 
-latexmk -pdfdvi -latex=platex -synctex=1 -e main.tex
+docker pull tkr1205/docker-alpine-texlive-ja
+docker run --rm -it -v $PWD:/workdir/tkr1205/docker-alpine-texlive-ja
+latexmk -C main.tex && latexmk main.tex && latexmk -c main.tex
+
+#latexmk -pdfdvi -latex=platex -synctex=1 -e main.tex
 
 ls
 
