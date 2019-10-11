@@ -36,84 +36,64 @@ latexmk -pdfdvi -latex=platex -synctex=1 -e main.tex
 
 ls
 
-# latexmk main.tex && latexmk -c main.tex
-
-# ls
-
 pwd
 
 find main.pdf
 
-# Only upload to non-draft releases
-#IS_DRAFT=$(jq --raw-output '.release.draft' $GITHUB_EVENT_PATH)
-#if [ "$IS_DRAFT" = true ]; then
-#  echo "This is a draft, so nothing to do!"
-#  exit 0
-#fi
+### Determine  project repository
+REPOSITORY="KONPEITO1205/Graduate_Report"
 
-# Prepare the headers
-#AUTH_HEADER="Authorization: token ${GITHUB_TOKEN}"
-#CONTENT_LENGTH_HEADER="Content-Length: $(stat -c%s main.pdf)"
-#CONTENT_TYPE_HEADER="Content-Type: application/pdf"
+### If you are using via some CI service, you can use following server specific variable.
 
-# Build the Upload URL from the various pieces
-#RELEASE_ID=$(jq --raw-output '.release.id' $GITHUB_EVENT_PATH)
-#FILENAME=$(basename main.pdf)
-#UPLOAD_URL="https://uploads.github.com/repos/${GITHUB_REPOSITORY}/releases/${RELEASE_ID}/assets?name=${FILENAME}"
-#echo "$UPLOAD_URL"
+### In Circle CI:
+#REPOSITORY="${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}"
 
-# Upload the file
-#curl \
-#  -sSL \
-#  -XPOST \
-#  -H "${AUTH_HEADER}" \
-#  -H "${CONTENT_LENGTH_HEADER}" \
-#  -H "${CONTENT_TYPE_HEADER}" \
-#  --upload-file "main.pdf" \
-#  "${UPLOAD_URL}"
+### In Travis CI:
+#REPOSITORY="${TRAVIS_REPO_SLUG}"
 
-# Ensure that the GITHUB_TOKEN secret is included
-if [[ -z "$GITHUB_TOKEN" ]]; then
-  echo "Set the GITHUB_TOKEN env variable."
+### Determine release tag name
+TAG="v0.1"
+
+### If you are using via some CI service, you can use following server specific variable.
+
+### In Circle CI:
+#TAG="${CIRCLE_TAG}"
+
+### In Travis CI:
+#TAG="${TRAVIS_TAG}"
+
+
+####### You don't need to modify following area #######
+
+ACCEPT_HEADER="Accept: application/vnd.github.jean-grey-preview+json"
+TOKEN_HEADER="Authorization: token ${GITHUB_TOKEN}"
+ENDPOINT="https://api.github.com/repos/${REPOSITORY}/releases"
+
+echo "Creatting new release as version ${TAG}..."
+REPLY=$(curl -H "${ACCEPT_HEADER}" -H "${TOKEN_HEADER}" -d "{\"tag_name\": \"${TAG}\", \"name\": \"${TAG}\"}" "${ENDPOINT}")
+
+# Check error
+RELEASE_ID=$(echo "${REPLY}" | jq .id)
+if [ "${RELEASE_ID}" = "null" ]; then
+  echo "Failed to create release. Please check your configuration. Github replies:"
+  echo "${REPLY}"
   exit 1
 fi
 
-# Ensure that the file path is present
-if [[ -z main.pdf ]]; then
-  echo "You must pass at least one argument to this action, the path to the file to upload."
-  exit 1
-fi
+echo "Github release created as ID: ${RELEASE_ID}"
+RELEASE_URL="https://uploads.github.com/repos/${REPOSITORY}/releases/${RELEASE_ID}/assets"
 
-# Only upload to non-draft releases
-IS_DRAFT=$(jq --raw-output '.release.draft' ${GITHUB_EVENT_PATH})
-if [ "$IS_DRAFT" = true ]; then
-  echo "This is a draft, so nothing to do!"
-  exit 0
-fi
+# Uploads artifacts
+FILE="main.pdf"
+MIME=$(file -b --mime-type "${FILE}")
+echo "Uploading assets ${FILE} as ${MIME}..."
+NAME=$(basename "${FILE}")
+curl -v \
+  -H "${ACCEPT_HEADER}" \
+  -H "${TOKEN_HEADER}" \
+  -H "Content-Type: ${MIME}" \
+  --data-binary "@${FILE}" \
+  "${RELEASE_URL}?name=${NAME}"
+done
 
-echo "$IS_DRAFT"
-
-# Prepare the headers
-AUTH_HEADER="Authorization: token ${GITHUB_TOKEN}"
-CONTENT_LENGTH_HEADER="Content-Length: $(stat -c%s main.pdf)"
-CONTENT_TYPE_HEADER="Content-Type: application/pdf"
-
-# Build the Upload URL from the various pieces
-REL_ID=`echo ${res} | python3 -c 'import json,sys;print(json.load(sys.stdin))'`
-echo "$REL_ID"
-RELEASE_ID=$(jq --raw-output ["release.id"] ${GITHUB_EVENT_PATH})
-echo "$RELEASE_ID"
-FILENAME=$(basename main.pdf)
-UPLOAD_URL="https://uploads.github.com/repos/${GITHUB_REPOSITORY}/releases/${RELEASE_ID}/assets?name=${FILENAME}"
-echo "$UPLOAD_URL"
-
-# Upload the file
-curl \
-  -sSL \
-  -XPOST \
-  -H "${AUTH_HEADER}" \
-  -H "${CONTENT_TYPE_HEADER}" \
-  --upload-file main.pdf \
-  "${UPLOAD_URL}"
-
-#   -H "${CONTENT_LENGTH_HEADER}" \
+echo "Finished."
