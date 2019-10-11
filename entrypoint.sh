@@ -7,7 +7,14 @@ GITHUB_TOKEN="$2"
 GITHUB_EVENT_PATH="$3"
 TAG="$4"
 
+echo font list
 ls /usr/share/fonts
+
+echo truetype
+ls /usr/share/fonts/truetype
+
+echo Type1
+ls ls /usr/share/fonts/Type1
 # kanji-config-updmap-sys ipaex
 
 latexmk -pdfdvi -latex=platex -synctex=1 -e main.tex
