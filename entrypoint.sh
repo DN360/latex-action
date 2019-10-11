@@ -7,13 +7,7 @@ GITHUB_TOKEN="$2"
 GITHUB_EVENT_PATH="$3"
 TAG="$4"
 
-# rm -r /opt/texlive/texdir/texmf-var/fonts/map/dvips && ln -s /opt/texlive/texdir/texmf-var/fonts/map/dvipsj /opt/texlive/texdir/texmf-var/fonts/map/dvips
-
-echo check
-
-kpsewhich -format=tfm rml.tfm
-
-kpsewhich -format=tmf jisg.tmf
+kanji-config-updmap-sys ipaex
 
 latexmk -pdfdvi -latex=platex -synctex=1 -e main.tex
 

@@ -10,6 +10,9 @@ RUN apk --no-cache add \
         python \
         python3 \
         tar \
+        texlive-lang-japanese \
+        texlive-fonts-recommended \
+        texlive-fonts-extra \
         wget \
         xz
 
