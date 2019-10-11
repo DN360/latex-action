@@ -94,6 +94,5 @@ curl -v \
   -H "Content-Type: ${MIME}" \
   --data-binary "@${FILE}" \
   "${RELEASE_URL}?name=${NAME}"
-done
 
 echo "Finished."
