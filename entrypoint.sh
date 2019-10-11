@@ -7,7 +7,8 @@ GITHUB_TOKEN="$2"
 GITHUB_EVENT_PATH="$3"
 TAG="$4"
 
-kanji-config-updmap-sys ipaex
+ls /usr/share/fonts
+# kanji-config-updmap-sys ipaex
 
 latexmk -pdfdvi -latex=platex -synctex=1 -e main.tex
 
