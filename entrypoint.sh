@@ -63,7 +63,7 @@ echo "Github release created as ID: ${RELEASE_ID}"
 RELEASE_URL="https://uploads.github.com/repos/${REPOSITORY}/releases/${RELEASE_ID}/assets"
 
 # Uploads artifacts
-FILE="main.pdf"
+FILE="/github/workspace/main.pdf"
 MIME=$(file -b --mime-type "${FILE}")
 echo "Uploading assets ${FILE} as ${MIME}..."
 NAME=$(basename "${FILE}")
