@@ -9,7 +9,8 @@ TAG="$4"
 
 latexmk -pdfdvi -latex=platex -synctex=1 -e main.tex
 
-kpsewhich --format=.map psfonts.map
+KPWHICH=$(kpsewhich --format=.map psfonts.map)
+cat "${KPWHICH}"
 
 ls
 
