@@ -71,7 +71,7 @@ curl -v \
   -H "${ACCEPT_HEADER}" \
   -H "${TOKEN_HEADER}" \
   -H "Content-Type: ${MIME}" \
-  --data-binary "@${FILE}" \
+  --upload-file "${FILE}" \
   "${RELEASE_URL}?name=${NAME}"
 
 echo "Finished."
