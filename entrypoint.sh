@@ -11,9 +11,9 @@ TAG="$4"
 
 echo check
 
-kpsewhich -format=vf jisg.vf
-
 kpsewhich -format=tfm rml.tfm
+
+kpsewhich -format=tmf jisg.tmf
 
 latexmk -pdfdvi -latex=platex -synctex=1 -e main.tex
 
