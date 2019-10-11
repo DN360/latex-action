@@ -7,8 +7,6 @@ GITHUB_TOKEN="$2"
 GITHUB_EVENT_PATH="$3"
 TAG="$4"
 
-echo fonts
-ls ls /usr/share/fonts
 # kanji-config-updmap-sys ipaex
 
 docker pull tkr1205/docker-alpine-texlive-ja
