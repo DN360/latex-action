@@ -9,7 +9,6 @@ TAG="$4"
 
 # kanji-config-updmap-sys ipaex
 
-cp /usr/local/texlive/2019/texmf-dist/kanjix.map /github/workspace
 cat kanjix.map
 
 latexmk -pdfdvi -latex=platex -synctex=1 -e main.tex
