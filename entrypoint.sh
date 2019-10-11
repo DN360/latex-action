@@ -8,10 +8,11 @@ GITHUB_EVENT_PATH="$3"
 TAG="$4"
 
 # kanji-config-updmap-sys ipaex
-
+# kpsewhich --format=.map psfonts.map
 ls
 
-latexmk -pdfdvi -latex=platex -synctex=1 -e main.tex
+# latexmk -pdfdvi -latex=platex -synctex=1 -e main.tex
+latexmk main.tex
 
 ls
 
