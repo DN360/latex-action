@@ -99,10 +99,8 @@ CONTENT_LENGTH_HEADER="Content-Length: $(stat -c%s main.pdf)"
 CONTENT_TYPE_HEADER="Content-Type: application/pdf"
 
 # Build the Upload URL from the various pieces
-CHECK_ID=$(jq --raw-output ".[]" ${GITHUB_EVENT_PATH})
-echo "$CHECK_ID"
-CHECK_ID_N=$(jq ".[]" ${GITHUB_EVENT_PATH})
-echo "$CHECK_ID_N"
+REL_ID=`echo ${res} | python3 -c 'import json,sys;print(json.load(sys.stdin))'`
+echo "$REL_ID"
 RELEASE_ID=$(jq --raw-output ["release.id"] ${GITHUB_EVENT_PATH})
 echo "$RELEASE_ID"
 FILENAME=$(basename main.pdf)
