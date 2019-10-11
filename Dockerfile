@@ -2,6 +2,7 @@ FROM  tkr1205/docker-alpine-texlive-ja:latest
 
 RUN apk --no-cache add \
         curl \
+        file \
         ghostscript \
         gnupg \
         jq \
