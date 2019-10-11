@@ -91,6 +91,8 @@ if [ "$IS_DRAFT" = true ]; then
   exit 0
 fi
 
+echo "$IS_DRAFT"
+
 # Prepare the headers
 AUTH_HEADER="Authorization: token ${GITHUB_TOKEN}"
 CONTENT_LENGTH_HEADER="Content-Length: $(stat -c%s main.pdf)"
