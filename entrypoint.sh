@@ -52,7 +52,7 @@ REPOSITORY="KONPEITO1205/Graduate_Report"
 #REPOSITORY="${TRAVIS_REPO_SLUG}"
 
 ### Determine release tag name
-TAG="v0.1.1"
+TAG="v0.1.2"
 
 ### If you are using via some CI service, you can use following server specific variable.
 
@@ -70,7 +70,7 @@ TOKEN_HEADER="Authorization: token ${GITHUB_TOKEN}"
 ENDPOINT="https://api.github.com/repos/${REPOSITORY}/releases"
 
 echo "Creatting new release as version ${TAG}..."
-REPLY=$(curl -H "${ACCEPT_HEADER}" -H "${TOKEN_HEADER}" -d "{\"tag_name\": \"${TAG}\", \"name\": \"${TAG}\"}" "${ENDPOINT}")
+REPLY=$(curl -H "${ACCEPT_HEADER}" -H "${TOKEN_HEADER}" -d "{\"tag_name\": \"v0.1.2\", \"name\": \"PDF_UPLOAD\"}" "${ENDPOINT}")
 
 # Check error
 RELEASE_ID=$(echo "${REPLY}" | jq .id)
