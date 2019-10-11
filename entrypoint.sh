@@ -9,11 +9,10 @@ TAG="$4"
 
 # kanji-config-updmap-sys ipaex
 
-docker pull tkr1205/docker-alpine-texlive-ja
-docker run --rm -it -v $PWD:/workdir/tkr1205/docker-alpine-texlive-ja
-latexmk -C main.tex && latexmk main.tex && latexmk -c main.tex
+cp /usr/local/texlive/2019/texmf-dist/kanjix.map /github/workspace
+cat kanjix.map
 
-#latexmk -pdfdvi -latex=platex -synctex=1 -e main.tex
+latexmk -pdfdvi -latex=platex -synctex=1 -e main.tex
 
 ls
 
