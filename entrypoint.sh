@@ -33,7 +33,7 @@ TAG="$4"
 
 #texliveonfly -c "$compiler" -a "$args" "$root_file"
 
-latexmk -c -pdfdvi -latex=platex -synctex=1 -e main.tex
+latexmk -pdfdvi -latex=platex -synctex=1 -e main.tex
 
 ls
 
