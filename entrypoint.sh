@@ -7,10 +7,9 @@ GITHUB_TOKEN="$2"
 GITHUB_EVENT_PATH="$3"
 TAG="$4"
 
-latexmk -pdfdvi -latex=platex -synctex=1 -e main.tex
+rm -r /opt/texlive/texdir/texmf-var/fonts/map/dvips && ln -s /opt/texlive/texdir/texmf-var/fonts/map/dvipsj /opt/texlive/texdir/texmf-var/fonts/map/dvips
 
-KPWHICH=$(kpsewhich --format=.map psfonts.map)
-cat "${KPWHICH}"
+latexmk -pdfdvi -latex=platex -synctex=1 -e main.tex
 
 ls
 
