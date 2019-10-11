@@ -24,6 +24,7 @@ COPY \
   texlive.profile \
   texlive_pgp_keys.asc \
   funinfosys.sty \
+  ref.bib \
   /root/
 RUN /root/setup.sh
 
