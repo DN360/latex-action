@@ -52,7 +52,7 @@ REPOSITORY="KONPEITO1205/Graduate_Report"
 #REPOSITORY="${TRAVIS_REPO_SLUG}"
 
 ### Determine release tag name
-TAG="v0.1"
+TAG="v0.1.1"
 
 ### If you are using via some CI service, you can use following server specific variable.
 
