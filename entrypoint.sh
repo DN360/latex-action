@@ -33,42 +33,23 @@ TAG="$4"
 
 #texliveonfly -c "$compiler" -a "$args" "$root_file"
 
-latexmk -pdfdvi -latex=platex -synctex=1 -e main.tex
+latexmk -c -pdfdvi -latex=platex -synctex=1 -e main.tex
 
 ls
 
 pwd
 
-find main.pdf
+du main.pdf
 
 ### Determine  project repository
 REPOSITORY="KONPEITO1205/Graduate_Report"
-
-### If you are using via some CI service, you can use following server specific variable.
-
-### In Circle CI:
-#REPOSITORY="${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}"
-
-### In Travis CI:
-#REPOSITORY="${TRAVIS_REPO_SLUG}"
-
-### If you are using via some CI service, you can use following server specific variable.
-
-### In Circle CI:
-#TAG="${CIRCLE_TAG}"
-
-### In Travis CI:
-#TAG="${TRAVIS_TAG}"
-
-
-####### You don't need to modify following area #######
 
 ACCEPT_HEADER="Accept: application/vnd.github.jean-grey-preview+json"
 TOKEN_HEADER="Authorization: token ${GITHUB_TOKEN}"
 ENDPOINT="https://api.github.com/repos/${REPOSITORY}/releases"
 
 echo "Creatting new release as version ${TAG}..."
-REPLY=$(curl -H "${ACCEPT_HEADER}" -H "${TOKEN_HEADER}" -d "{\"tag_name\": \"${TAG}}\", \"name\": \"PDF_UPLOAD\"}" "${ENDPOINT}")
+REPLY=$(curl -H "${ACCEPT_HEADER}" -H "${TOKEN_HEADER}" -d "{\"tag_name\": \"${TAG}\", \"name\": \"PDF_UPLOAD\"}" "${ENDPOINT}")
 
 # Check error
 RELEASE_ID=$(echo "${REPLY}" | jq .id)
