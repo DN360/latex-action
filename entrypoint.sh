@@ -10,7 +10,7 @@ TAG="$4"
 # kanji-config-updmap-sys ipaex
 # kpsewhich --format=.map psfonts.map
 
-which dvipdfmx
+which -a dvipdfmx
 
 ls
 
