@@ -39,7 +39,7 @@ ls
 
 pwd
 
-du main.pdf
+du -k main.pdf
 
 ### Determine  project repository
 REPOSITORY="KONPEITO1205/Graduate_Report"
