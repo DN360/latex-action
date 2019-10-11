@@ -5,6 +5,7 @@ set -e
 root_file="$1"
 GITHUB_TOKEN="$2"
 GITHUB_EVENT_PATH="$3"
+TAG="$4"
 #working_directory="$2"
 #compiler="$3"
 #args="$4"
@@ -50,9 +51,6 @@ REPOSITORY="KONPEITO1205/Graduate_Report"
 
 ### In Travis CI:
 #REPOSITORY="${TRAVIS_REPO_SLUG}"
-
-### Determine release tag name
-TAG="v0.1.2"
 
 ### If you are using via some CI service, you can use following server specific variable.
 
