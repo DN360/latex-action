@@ -24,6 +24,7 @@ COPY \
   texlive.profile \
   texlive_pgp_keys.asc \
   funinfosys.sty \
+  kanjix.map \
   /root/
 RUN /root/setup.sh
 
