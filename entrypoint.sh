@@ -99,7 +99,8 @@ CONTENT_LENGTH_HEADER="Content-Length: $(stat -c%s main.pdf)"
 CONTENT_TYPE_HEADER="Content-Type: application/pdf"
 
 # Build the Upload URL from the various pieces
-RELEASE_ID=$(jq --raw-output '.release.id' ${GITHUB_EVENT_PATH})
+echo jq --raw-output [] ${GITHUB_EVENT_PATH}
+RELEASE_ID=$(jq --raw-output ["release.id"] ${GITHUB_EVENT_PATH})
 echo "$RELEASE_ID"
 FILENAME=$(basename main.pdf)
 UPLOAD_URL="https://uploads.github.com/repos/${GITHUB_REPOSITORY}/releases/${RELEASE_ID}/assets?name=${FILENAME}"
