@@ -9,6 +9,10 @@ TAG="$4"
 
 # rm -r /opt/texlive/texdir/texmf-var/fonts/map/dvips && ln -s /opt/texlive/texdir/texmf-var/fonts/map/dvipsj /opt/texlive/texdir/texmf-var/fonts/map/dvips
 
+kpsewhich -format=vf jisg.vf
+
+kpsewhich -format=tfm rml.tfm
+
 latexmk -pdfdvi -latex=platex -synctex=1 -e main.tex
 
 ls
