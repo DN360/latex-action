@@ -9,7 +9,7 @@ TAG="$4"
 
 # kanji-config-updmap-sys ipaex
 
-cat kanjix.map
+ls
 
 latexmk -pdfdvi -latex=platex -synctex=1 -e main.tex
 
