@@ -10,6 +10,8 @@ TAG="$4"
 # kanji-config-updmap-sys ipaex
 # kpsewhich --format=.map psfonts.map
 
+kpathsea --format=.ttc meiryob.ttc
+
 # which -a dvipdfmx
 
 ls
