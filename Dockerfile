@@ -58,6 +58,8 @@ RUN   apt update && \
             gv \
             texlive-fonts-recommended \
             texlive-fonts-extra \
+            texlive-bibtex-extra \
+            biber \
             nkf && \
       apt autoremove && \
       apt clean && \
