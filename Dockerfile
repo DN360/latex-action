@@ -46,8 +46,11 @@ RUN apk --no-cache --update add wget perl xz tar fontconfig-dev && \
 COPY texlive.profile /root/install-tl-unx/
 RUN /root/install-tl-unx/install-tl \
     --repository=http://mirror.ctan.org/systems/texlive/tlnet/ \
-    --profile=/root/install-tl-unx/texlive.profile && \
-    tlmgr install \
+    --profile=/root/install-tl-unx/texlive.profile
+
+RUN which tlmgr
+
+RUN tlmgr install \
         collection-basic collection-latex \
         collection-latexrecommended collection-latexextra \
         collection-fontsrecommended collection-langjapanese latexmk && \
