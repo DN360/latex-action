@@ -9,17 +9,15 @@ TAG="$4"
 
 # kanji-config-updmap-sys ipaex
 # kpsewhich --format=.map psfonts.map
-
-cat /opt/texlive/texdir/texmf.cnf
-cat /opt/texlive/texdir/texmf-dist/web2c/texmf.cnf
 #kpsewhich --format=.ttc meiryob.ttc
 
 # which -a dvipdfmx
 
-ls
+platex root_file
+dvipdfmx $(echo ${root_file} | sed "s/.tex$/.dvi/g")
 
 # latexmk -pdfdvi -latex=platex -synctex=1 -e main.tex
-latexmk -f main.tex
+# latexmk -f main.tex
 
 ls
 
