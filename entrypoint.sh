@@ -16,6 +16,8 @@ TAG="$4"
 # latexmk main.tex
 chmod 755 /bin/build
 
+which biber
+
 ls
 
 build main.tex
