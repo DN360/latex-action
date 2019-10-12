@@ -16,7 +16,7 @@ TAG="$4"
 # latexmk main.tex
 
 platex main.tex
-biblatex main
+bibtex main
 platex main.tex
 platex main.tex
 platex main.tex
