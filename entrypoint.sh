@@ -11,7 +11,7 @@ TAG="$4"
 # kpsewhich --format=.map psfonts.map
 #kpsewhich --format=.ttc meiryob.ttc
 
-# which -a dvipdfmx
+which -a dvipdfmx
 
 platex $root_file
 dvipdfmx $(echo ${root_file} | sed "s/.tex$/.dvi/g")
