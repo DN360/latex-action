@@ -12,8 +12,9 @@ TAG="$4"
 #kpsewhich --format=.ttc meiryob.ttc
 
 # latexmk -pdfdvi -latex=platex -synctex=1 -e main.tex
-kpsewhich -progname=dvipdfmx -format=cmap H
-latexmk main.tex
+# kpsewhich -progname=dvipdfmx -format=cmap H
+# latexmk main.tex
+build main.pdf
 #uplatex main.tex
 #dvipdfmx main.dvi
 
