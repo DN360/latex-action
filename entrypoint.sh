@@ -15,7 +15,7 @@ TAG="$4"
 # kpsewhich -progname=dvipdfmx -format=cmap H
 # latexmk main.tex
 
-kpsewhich --format=.cfg dvipdfmx.cfg
+find dvipdfmx.cfg
 
 platex main.tex
 bibtex main && :
