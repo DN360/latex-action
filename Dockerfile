@@ -50,7 +50,7 @@
 FROM ubuntu:18.04
 
 RUN   apt update && \
-      apt -y install \
+      apt install -y --no-install-recommends \
             texlive-lang-cjk \
             xdvik-ja \
             texlive-fonts-recommended \
