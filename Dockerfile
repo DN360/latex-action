@@ -40,7 +40,7 @@ texlive-lang-japanese \
 # for CTAN packages
 texlive-plain-generic texlive-latex-base texlive-latex-extra \
 # Biber
-biber \
+texlive-bibtex-extra biber \
 # for latexmk
 latexmk \
 # for noto font: Bold and Regular
