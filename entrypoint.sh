@@ -14,7 +14,7 @@ TAG="$4"
 
 ls /usr/local/texlive/2019/bin/x86_64-linux/dvipdfmx
 
-ls /usr/local/texlive/2019/bin/x86_64-linux/dvipdfmx
+ls /opt/texlive/texdir/bin/x86_64-linuxmusl/dvipdfmx
 
 ls
 
