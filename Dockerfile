@@ -32,10 +32,10 @@
 
 FROM alpine:3.8
 
-ENV PATH /usr/local/texlive/2018/bin/x86_64-linuxmusl:$PATH
+ENV PATH /usr/local/texlive/2019/bin/x86_64-linuxmusl:$PATH
 
 RUN apk --no-cache --update add bash
-ENV SHELL /bin/bash
+# ENV SHELL /bin/bash
 
 WORKDIR /root
 RUN apk --no-cache --update add wget perl xz tar fontconfig-dev && \
