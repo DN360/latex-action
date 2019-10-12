@@ -22,8 +22,10 @@ case "$CHARSET" in
 esac
 
 echo run latex
-platex -kanji=$KANJI "$BASEFILE"
-pbibtex -kanji=$KANJI "$BASEFILE"
-platex -kanji=$KANJI "$BASEFILE"
-platex -kanji=$KANJI "$BASEFILE"
+platex -kanji=$KANJI "$BASEFILE" && :
+echo run pbibtex
+pbibtex -kanji=$KANJI "$BASEFILE" && :
+echo run latex again
+platex -kanji=$KANJI "$BASEFILE" && :
+platex -kanji=$KANJI "$BASEFILE" && :
 dvipdfmx "$DVIFILE"
