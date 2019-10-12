@@ -30,24 +30,40 @@
 
 #ENTRYPOINT ["/root/entrypoint.sh"]
 
-FROM ubuntu:18.04
-
-ENV DEBIAN_FRONTEND noninteractive
-
-RUN apt update && apt install -y --no-install-recommends \
+#FROM ubuntu:18.04
+#ENV DEBIAN_FRONTEND noninteractive
+#RUN apt update && apt install -y --no-install-recommends \
 # for (u)platex
-texlive-lang-japanese \
+#texlive-lang-japanese \
 # for CTAN packages
-texlive-plain-generic texlive-latex-base texlive-latex-extra \
+#texlive-plain-generic texlive-latex-base texlive-latex-extra \
 # Biber
-texlive-bibtex-extra biber texlive-fonts-recommended \
+#texlive-bibtex-extra biber texlive-fonts-recommended \
 # for latexmk
-latexmk \
+#latexmk \
 # for noto font: Bold and Regular
-fonts-noto-cjk \
+#fonts-noto-cjk \
 # for noto font: Black, DemiLight, Light, Medium, Thin and so on
-fonts-noto-cjk-extra \
-&& rm -rf /var/lib/apt/lists/*
+#fonts-noto-cjk-extra \
+#&& rm -rf /var/lib/apt/lists/*
+
+FROM ubuntu:xenial
+
+RUN   apt update && \
+      apt -y install \
+            texlive \
+            texlive-lang-cjk \
+            xdvik-ja \
+            dvipsk-ja \
+            gv \
+            texlive-fonts-recommended \
+            texlive-fonts-extra \
+            nkf && \
+      apt autoremove && \
+      apt clean && \
+      rm -rf /var/lib/apt/lists/*
+
+COPY bin/build /bin/
 
 ADD entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
