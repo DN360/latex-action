@@ -14,15 +14,9 @@ TAG="$4"
 # latexmk -pdfdvi -latex=platex -synctex=1 -e main.tex
 # kpsewhich -progname=dvipdfmx -format=cmap H
 # latexmk main.tex
-chmod 755 /bin/build
 
-which biber
-
-ls
-
-build main.tex
-#uplatex main.tex
-#dvipdfmx main.dvi
+platex main.tex
+dvipdfmx main.dvi
 
 ls
 

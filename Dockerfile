@@ -47,27 +47,19 @@
 #fonts-noto-cjk-extra \
 #&& rm -rf /var/lib/apt/lists/*
 
-FROM ubuntu:xenial
+FROM ubuntu:18.04
 
 RUN   apt update && \
       apt -y install \
-            texlive \
             texlive-lang-cjk \
             xdvik-ja \
-            dvipsk-ja \
-            gv \
             texlive-fonts-recommended \
             texlive-fonts-extra \
-            texlive-bibtex-extra \
             biber \
             nkf && \
       apt autoremove && \
       apt clean && \
       rm -rf /var/lib/apt/lists/*
-
-COPY bin/build /bin/
-
-RUN ls
 
 ADD entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
