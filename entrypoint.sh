@@ -13,7 +13,7 @@ TAG="$4"
 
 # latexmk -pdfdvi -latex=platex -synctex=1 -e main.tex
 #latexmk main.tex
-platex main.tex
+uplatex main.tex
 dvipdfmx main.dvi
 
 ls
