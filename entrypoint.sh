@@ -13,7 +13,7 @@ TAG="$4"
 
 # which -a dvipdfmx
 
-platex $r{oot_file}
+platex $root_file
 dvipdfmx $(echo ${root_file} | sed "s/.tex$/.dvi/g")
 
 # latexmk -pdfdvi -latex=platex -synctex=1 -e main.tex
