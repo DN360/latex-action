@@ -28,6 +28,5 @@ pbibtex -kanji=$KANJI "$BASEFILE" && :
 /usr/bin/bibier -kanji=$KANJI "$BASEFILE" && :
 echo run latex again
 platex -kanji=$KANJI "$BASEFILE" && :
-cat main.log
 platex -kanji=$KANJI "$BASEFILE" && :
-dvipdfmx "$DVIFILE"
+dvipdfmx "$DVIFILE" && :
