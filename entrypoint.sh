@@ -11,13 +11,8 @@ TAG="$4"
 # kpsewhich --format=.map psfonts.map
 #kpsewhich --format=.ttc meiryob.ttc
 
-which -a dvipdfmx
-
-platex $root_file
-dvipdfmx $(echo ${root_file} | sed "s/.tex$/.dvi/g")
-
 # latexmk -pdfdvi -latex=platex -synctex=1 -e main.tex
-# latexmk -f main.tex
+latexmk main.tex
 
 ls
 
