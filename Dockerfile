@@ -30,21 +30,22 @@
 
 #ENTRYPOINT ["/root/entrypoint.sh"]
 
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
-RUN apt-get update \
-  && apt-get install -y --no-install-recommends \
-    curl \
-    python3 \
-    latexmk \
-    lmodern \
-    texlive \
-    texlive-latex-extra \
-    texlive-lang-japanese \
-  && rm -rf /var/lib/apt/lists/*
+ENV DEBIAN_FRONTEND noninteractive
 
-RUN mktexlsr && mkdir -p /app
-WORKDIR /app
+RUN apt update && apt install -y --no-install-recommends \
+# for (u)platex
+texlive-lang-japanese \
+# for CTAN packages
+texlive-plain-generic texlive-latex-base texlive-latex-extra \
+# for latexmk
+latexmk \
+# for noto font: Bold and Regular
+fonts-noto-cjk \
+# for noto font: Black, DemiLight, Light, Medium, Thin and so on
+fonts-noto-cjk-extra \
+&& rm -rf /var/lib/apt/lists/*
 
 ADD entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
