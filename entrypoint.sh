@@ -15,6 +15,9 @@ TAG="$4"
 # kpsewhich -progname=dvipdfmx -format=cmap H
 # latexmk main.tex
 chmod 755 /bin/build
+
+ls
+
 build main.tex
 #uplatex main.tex
 #dvipdfmx main.dvi
