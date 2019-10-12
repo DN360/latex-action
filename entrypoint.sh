@@ -16,6 +16,7 @@ TAG="$4"
 # latexmk main.tex
 
 platex main.tex
+biblatex main
 platex main.tex
 dvipdfmx main.dvi
 

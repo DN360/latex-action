@@ -57,6 +57,8 @@ RUN   apt update && \
             xdvik-ja \
             texlive-fonts-recommended \
             texlive-fonts-extra \
+            texlive-lang-japanese \
+            fonts-noto-cjk fonts-noto-cjk-extra \
             biber \
             nkf && \
       apt autoremove && \
