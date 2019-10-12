@@ -47,5 +47,7 @@ fonts-noto-cjk \
 fonts-noto-cjk-extra \
 && rm -rf /var/lib/apt/lists/*
 
+RUN tlmgr install biblatex
+
 ADD entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
