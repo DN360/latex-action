@@ -25,7 +25,7 @@ echo run latex
 platex -kanji=$KANJI "$BASEFILE" && :
 echo run pbibtex
 pbibtex -kanji=$KANJI "$BASEFILE" && :
-bibier -kanji=$KANJI "$BASEFILE" && :
+/usr/bin/bibier -kanji=$KANJI "$BASEFILE" && :
 echo run latex again
 platex -kanji=$KANJI "$BASEFILE" && :
 cat main.log
