@@ -10,7 +10,11 @@ TAG="$4"
 # kanji-config-updmap-sys ipaex
 # kpsewhich --format=.map psfonts.map
 
-which -a dvipdfmx
+# which -a dvipdfmx
+
+ls /usr/local/texlive/2019/bin/x86_64-linux/dvipdfmx
+
+ls /usr/local/texlive/2019/bin/x86_64-linux/dvipdfmx
 
 ls
 
