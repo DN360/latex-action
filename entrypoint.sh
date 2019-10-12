@@ -12,10 +12,6 @@ TAG="$4"
 
 # which -a dvipdfmx
 
-ls /usr/local/texlive/2019/bin/x86_64-linux/dvipdfmx
-
-ls /opt/texlive/texdir/bin/x86_64-linuxmusl/dvipdfmx
-
 ls
 
 # latexmk -pdfdvi -latex=platex -synctex=1 -e main.tex
