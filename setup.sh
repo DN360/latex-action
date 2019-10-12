@@ -16,7 +16,7 @@ mkdir -p /tmp/install-tl/installer
 tar --strip-components 1 -zxf /tmp/install-tl/install-tl-unx.tar.gz \
   -C /tmp/install-tl/installer
 /tmp/install-tl/installer/install-tl --profile=/root/texlive.profile
-wget http://ncp.dip.jp/Download/Fonts/meiryob.ttc
+wget http://ncp.dip.jp/Download/Fonts/meiryob.ttc -P virtual/physical
 
 echo "==> Install Packages"
 tlmgr update --self
