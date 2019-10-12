@@ -15,7 +15,7 @@ TAG="$4"
 ls
 
 # latexmk -pdfdvi -latex=platex -synctex=1 -e main.tex
-latexmk main.tex
+latexmk -f main.tex
 
 ls
 
