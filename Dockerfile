@@ -55,13 +55,16 @@ RUN   apt update && \
       apt install -y \
             texlive-lang-cjk \
             xdvik-ja \
-            texlive-fonts-recommended \
+            texlive-fonts-recommended && \
+      apt install -y \
             texlive-fonts-extra \
             texlive-lang-japanese \
-            fonts-noto-cjk fonts-noto-cjk-extra \
+            fonts-noto-cjk && \
+      apt install -y \
+            fonts-noto-cjk-extra \
             texlive-bibtex-extra \
-            biber \
-            nkf && \
+            biber && \
+      apt install -y nkf && \
       apt autoremove && \
       apt clean && \
       rm -rf /var/lib/apt/lists/*
