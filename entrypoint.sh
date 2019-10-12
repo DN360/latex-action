@@ -18,6 +18,9 @@ TAG="$4"
 platex main.tex
 biblatex main
 platex main.tex
+platex main.tex
+platex main.tex
+platex main.tex
 dvipdfmx main.dvi
 
 ls
