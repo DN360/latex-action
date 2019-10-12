@@ -24,7 +24,7 @@ esac
 echo run latex
 platex -kanji=$KANJI "$BASEFILE" && :
 echo run pbibtex
-pbibtex -kanji=$KANJI "$BASEFILE" && :
+jbibtex -kanji=$KANJI "$BASEFILE" && :
 echo run latex again
 platex -kanji=$KANJI "$BASEFILE" && :
 platex -kanji=$KANJI "$BASEFILE" && :
