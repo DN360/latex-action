@@ -67,5 +67,7 @@ RUN   apt update && \
 
 COPY bin/build /bin/
 
+RUN ls
+
 ADD entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
