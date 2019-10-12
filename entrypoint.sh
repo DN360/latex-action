@@ -1,6 +1,6 @@
 #!/bin/sh
 
-set -e
+set -u
 
 root_file="$1"
 GITHUB_TOKEN="$2"
@@ -15,7 +15,7 @@ TAG="$4"
 # kpsewhich -progname=dvipdfmx -format=cmap H
 # latexmk main.tex
 
-which dvipdfmx 
+cat /etc/texmf/dvipdfm/dvipdfmx.cfg
 
 platex main.tex
 bibtex main && :
@@ -24,7 +24,7 @@ platex main.tex && :
 platex main.tex
 platex main.tex
 platex main.tex
-dvipdfmx main.dvi
+dvipdfmx -f jis-cjk main.dvi
 
 ls
 
