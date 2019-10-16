@@ -7,6 +7,8 @@ RUN set -xe && \
     apt-get -y update && \
     apt-get install -y \
         make \
+        curl \
+        jq \
         texlive-lang-cjk \
         xdvik-ja \
         texlive-fonts-recommended \
