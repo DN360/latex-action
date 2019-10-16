@@ -7,11 +7,11 @@ GITHUB_TOKEN="$2"
 GITHUB_EVENT_PATH="$3"
 TAG="$4"
 
-platex sample.tex
-pbibtex sample
-platex sample.tex
-platex sample.tex
-dvipdfmx sample
+platex main.tex
+pbibtex main
+platex  main.tex
+platex main.tex
+dvipdfmx main
 
 ls
 
