@@ -14,9 +14,5 @@ RUN set -xe && \
     apt autoremove -y && \
     apt-get clean
 
-RUN mkdir /texsrc
-WORKDIR /texsrc
-
-VOLUME /texsrc
-
-CMD ["/bin/bash"]
+ADD entrypoint.sh /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
