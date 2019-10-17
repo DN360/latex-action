@@ -28,7 +28,7 @@ runs:
     - ${{ inputs.root_file }}
     - ${{ inputs.token }}
     - ${{ inputs.event_path }}
-    - ${{ inputs.repository}}
+    - ${{ inputs.repository }}
     - ${{ inputs.tags }}
 branding:
   icon: book
