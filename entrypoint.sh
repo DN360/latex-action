@@ -7,19 +7,14 @@ GITHUB_TOKEN="$2"
 GITHUB_EVENT_PATH="$3"
 TAG="$4"
 
-ls
+% extract file name without extension
+root_name="${root_file%.*}"
 
-platex main.tex
-pbibtex main
-platex  main.tex
-platex main.tex
-dvipdfmx main
-
-ls
-
-pwd
-
-du -k main.pdf
+platex $root_file
+pbibtex $root_name
+platex  $root_file
+platex $root_file
+dvipdfmx $root_name
 
 ### Determine  project repository
 REPOSITORY="KONPEITO1205/Graduate_Report"
@@ -43,7 +38,7 @@ echo "Github release created as ID: ${RELEASE_ID}"
 RELEASE_URL="https://uploads.github.com/repos/${REPOSITORY}/releases/${RELEASE_ID}/assets"
 
 # Uploads artifacts
-FILE="/github/workspace/main.pdf"
+FILE="/github/workspace/${root_name}.pdf"
 MIME=$(file -b --mime-type "${FILE}")
 echo "Uploading assets ${FILE} as ${MIME}..."
 NAME=$(basename "${FILE}")

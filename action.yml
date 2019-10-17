@@ -17,18 +17,6 @@ inputs:
     description: "github event_path. this is require when comment is true."
     default: ""
     required: true
-  working_directory:
-    description: The working directory for texliveonfly to be invoked
-  compiler:
-    description: LaTeX engine to be used by texliveonfly
-    default: latexmk
-  args:
-    description: Extra arguments to be passed to texliveonfly
-    default: "-pdf -file-line-error -interaction=nonstopmode"
-  extra_packages:
-    description: Install extra packages by tlmgr
-  extra_system_packages:
-    description: Install extra packages by apk
 runs:
   using: docker
   image: Dockerfile
@@ -37,9 +25,6 @@ runs:
     - ${{ inputs.token }}
     - ${{ inputs.event_path }}
     - ${{ inputs.tags }}
-    #- ${{ inputs.args }}
-    #- ${{ inputs.extra_packages }}
-    #- ${{ inputs.extra_system_packages }}
 branding:
   icon: book
   color: blue
