@@ -14,7 +14,7 @@ inputs:
     default: ""
     required: true
   repo:
-    description: "github repository. this is require when comment is true."
+    description: "github repository name. this is require when comment is true."
     default: ""
     required: true
   tags:
