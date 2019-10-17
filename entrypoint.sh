@@ -8,8 +8,10 @@ GITHUB_EVENT_PATH="$3"
 REPOSITORY="$4"
 TAG="$5"
 
+echo "${root_file}"
 echo "this is repository name:"
 echo "${REPOSITORY}"
+echo "${TAG}"
 
 % extract file name without extension
 root_name="${root_file%.*}"
