@@ -5,7 +5,8 @@ set -u
 root_file="$1"
 GITHUB_TOKEN="$2"
 GITHUB_EVENT_PATH="$3"
-TAG="$4"
+REPOSITORY="$4"
+TAG="$5"
 
 % extract file name without extension
 root_name="${root_file%.*}"
@@ -15,9 +16,6 @@ pbibtex $root_name
 platex  $root_file
 platex $root_file
 dvipdfmx $root_name
-
-### Determine  project repository
-REPOSITORY="KONPEITO1205/Graduate_Report"
 
 ACCEPT_HEADER="Accept: application/vnd.github.jean-grey-preview+json"
 TOKEN_HEADER="Authorization: token ${GITHUB_TOKEN}"
