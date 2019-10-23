@@ -20,6 +20,7 @@ platex $root_file
 pbibtex $root_name
 platex  $root_file
 platex $root_file
+platex $root_file
 dvipdfmx $root_name
 
 ACCEPT_HEADER="Accept: application/vnd.github.jean-grey-preview+json"
