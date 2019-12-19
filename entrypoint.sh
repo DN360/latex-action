@@ -16,11 +16,11 @@ echo "${TAG}"
 % extract file name without extension
 root_name="${root_file%.*}"
 
-platex $root_file
+uplatex $root_file
 pbibtex $root_name
-platex  $root_file
-platex $root_file
-platex $root_file
+uplatex  $root_file
+uplatex $root_file
+uplatex $root_file
 dvipdfmx $root_name
 
 ACCEPT_HEADER="Accept: application/vnd.github.jean-grey-preview+json"
