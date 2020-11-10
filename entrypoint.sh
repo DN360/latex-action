@@ -13,14 +13,14 @@ echo "this is repository name:"
 echo "${REPOSITORY}"
 echo "${TAG}"
 
-% extract file name without extension
+# % extract file name without extension
 root_name="${root_file%.*}"
 
 uplatex $root_file
 pbibtex $root_name
 uplatex  $root_file
 uplatex $root_file
-uplatex $root_file
+uplatex $root_filehttps://github.com/DN360/latex-action/blob/master/entrypoint.sh
 dvipdfmx $root_name
 
 ACCEPT_HEADER="Accept: application/vnd.github.jean-grey-preview+json"
